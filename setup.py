@@ -16,9 +16,8 @@ setup(
 
     # When your source code is in a subdirectory under the project root, e.g.
     # `src/`, it is necessary to specify the `package_dir` argument.
-    package_dir={'': 'renderjson'},  # Optional
-
-    packages=find_packages(where='renderjson'),  # Required
+    package_dir={'renderjson': 'renderjson'},  # Optional
+    packages=['renderjson'],  # Required
     python_requires='>=3.5',
 
     # This field lists other packages that your project depends on to run.
