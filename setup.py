@@ -7,7 +7,7 @@ import pathlib
 
 setup(
     name='renderjson',  # Required
-    version='0.1.0',  # Required
+    version='0.1.1',  # Required
     description='Rendering JSON within IPython Notebook',  # Optional
 #    long_description=long_description,  # Optional
 #    long_description_content_type='text/markdown',  # Optional (see note above)
