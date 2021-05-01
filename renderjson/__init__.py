@@ -31,7 +31,7 @@ class RenderJSON(object):
         require(["https://rawgit.com/caldwell/renderjson/master/renderjson.js"], function(r) {
             var node = document.getElementById('%s');
             node.innerHTML = ''; // vola se 2x neznamo proc
-            node.appendChild(renderjson.set_icons('\u25BA', '\u25BC')(%s));
+            node.appendChild(renderjson.set_icons('\u25BA', '\u25BC').set_show_to_level(1)(%s));
             return true;
         });
         """ % (self.uuid, self.json_str), raw=True)
