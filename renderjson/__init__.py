@@ -1,5 +1,6 @@
 import json, uuid
-from IPython.display import display_javascript, display_html, display
+#from IPython.display import display_javascript, display_html, display
+from IPython.display import HTML, Javascript
 
 class RenderJSON(object):
     def __init__(self, json_data, show_to_level=1, bg_color="#303030",text_color="#888"):
@@ -13,7 +14,7 @@ class RenderJSON(object):
         self.show_to_level = show_to_level
 
     def _ipython_display_(self):
-        display_html("""<style>
+        HTML("""<style>
                         .renderjson {background:%s;padding:10px;color:%s}
                         .renderjson a              { color:lightblue; text-decoration: none; }
                         .renderjson .disclosure    { color: crimson; font-size: 80%%; }
@@ -28,7 +29,7 @@ class RenderJSON(object):
                         </style>
                         <div id="%s" style="width:100%%;"></div>""" % (self.bg_color, self.text_color, self.uuid), raw=True)
         
-        display_javascript("""
+        Javascript("""
         require(["https://rawgit.com/caldwell/renderjson/master/renderjson.js"], function(r) {
             var node = document.getElementById('%s');
             node.innerHTML = ''; // vola se 2x neznamo proc
