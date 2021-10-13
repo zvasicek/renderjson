@@ -4,10 +4,10 @@ from IPython.display import display_javascript, display_html, display
 
 class RenderJSON(object):
     def __init__(self, json_data, show_to_level=1, bg_color="#303030",text_color="#888"):
-        if isinstance(json_data, dict):
-            self.json_str = json.dumps(json_data)
-        else:
+        if isinstance(json_data, str):
             self.json_str = json_data
+        else:
+            self.json_str = json.dumps(json_data)
         self.uuid = str(uuid.uuid4())
         self.bg_color = bg_color
         self.text_color = text_color
