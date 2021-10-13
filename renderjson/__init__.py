@@ -1,6 +1,6 @@
 import json, uuid
 #from IPython.display import display_javascript, display_html, display
-from IPython.display import HTML, Javascript
+from IPython.display import HTML, Javascript, display
 
 class RenderJSON(object):
     def __init__(self, json_data, show_to_level=1, bg_color="#303030",text_color="#888"):
@@ -14,7 +14,7 @@ class RenderJSON(object):
         self.show_to_level = show_to_level
 
     def _ipython_display_(self):
-        HTML("""<style>
+        display(HTML("""<style>
                         .renderjson {background:%s;padding:10px;color:%s}
                         .renderjson a              { color:lightblue; text-decoration: none; }
                         .renderjson .disclosure    { color: crimson; font-size: 80%%; }
@@ -27,13 +27,13 @@ class RenderJSON(object):
                         .xrenderjson .object.syntax { color: #ddd; }
                         .renderjson .array.syntax  { color: #fff; }
                         </style>
-                        <div id="%s" style="width:100%%;"></div>""" % (self.bg_color, self.text_color, self.uuid), raw=True)
+                        <div id="%s" style="width:100%%;"></div>""" % (self.bg_color, self.text_color, self.uuid)))
         
-        Javascript("""
+        display(Javascript("""
         require(["https://rawgit.com/caldwell/renderjson/master/renderjson.js"], function(r) {
             var node = document.getElementById('%s');
             node.innerHTML = ''; // vola se 2x neznamo proc
             node.appendChild(renderjson.set_icons('\u25BA', '\u25BC').set_show_to_level(%s)(%s));
             return true;
         });
-        """ % (self.uuid, self.show_to_level, self.json_str), raw=True)
+        """ % (self.uuid, self.show_to_level, self.json_str)))
